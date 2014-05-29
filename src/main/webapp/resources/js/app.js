@@ -30,9 +30,16 @@
          $scope.message = "home page";
     }]);
 	
-	app.controller('CourseController', ['$scope', function ($scope) 
+	app.controller('CourseController', ['$scope', '$http', function ($scope, $http) 
 	{
-         $scope.message = "all courses page";
+		$scope.message = "all courses page";
+         
+         $http.get('app/courses').success(function(data)
+		 {
+             $scope.courses = data;
+             
+         });
+         
     }]);
 	
 	
