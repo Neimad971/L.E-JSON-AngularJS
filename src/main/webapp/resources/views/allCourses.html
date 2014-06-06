@@ -3,61 +3,33 @@
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./resources/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./resources/css/ng-grid.css" rel="stylesheet" type="text/css" media="screen" />
 
-
+	<head>
+		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular.js"></script>
+		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular-route.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/jquery.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/ng-grid.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/jquery-ui.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/app.js"></script>
+	</head>
 
 <body ng-controller="CourseController as courseCtrl">
 	
 	
-	    
-  	<div class="panel panel-default">
-		<div class="panel-heading"><h4>Liste de tous les cours</h4></div>
-				
-		<div ng-repeat="course in courses" class="container">
-			<table class="table">
-						
-				<!-- tr><th> Titre du cours </th><th> En ligne </th><th> Validé </th>  </tr-->
-				<tr>
-					<td> {{course.name}} </td>
-					<td> {{course.online}} </td>
-					<td> {{course.validated}} </td>
-					<td> <button type="button" class="btn btn-info">S'inscrire au cours</button> </td>
-					<td> <button type="button" class="btn btn-info">Voir les détails de ce cours</button> </td>
-				</tr>
-
-			</table>
-		</div>
-	</div>
+	<div class="gridStyle" ng-grid="gridOptions"></div> 
+	
+	<ul>
+		<li ng-repeat="item in mySelections">  
+		
+			<div>{{item.name}}</div>
+		
+		</li>  
+  	
+	
+	</ul>
+	<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">s'inscrire aux cours selectionnés</button>
 	<button type="button" class="btn btn-success">Accéder aux cours suivis</button>
-			
-   				
-   				
+
 	
 </body>
-
-
-
-
-
-
-
-
-
-<!-- Table >
-<table class="table">
-<tr><th> Matière </th><th> Titre du cours </th><th> Description </th><th> En ligne </th><th> Présentiel </th> </tr>
-<tr><td> Français </td><td> Methodologies </td><td> Les bases gramaticales </td><td> - </td><td> <button type="button" class="btn btn-info">S'inscrire au cours</button> </td></tr>
-<tr><td> Anglais </td><td> Les verbes irreguliers </td><td> Utilisation des verbes irreguliers </td><td> <button type="button" class="btn btn-info">Accéder au cours</button> </td><td> - </td></tr>
-<tr><td> Mathematique </td><td> Théoreme des graphes </td><td> Théoreme des graphes </td><td> - </td><td> <button type="button" class="btn btn-info">S'inscrire au cours</button> </td></tr>
-<tr><td> Informatique </td><td> Java IG </td><td> Les IHM (JFrames...) </td><td> <button type="button" class="btn btn-info">Accéder au cours</button> </td><td> <button type="button" class="btn btn-info">S'inscrire au cours</button> </td></tr>
-
-</table>
-</div>
-
-<button type="button" class="btn btn-success">Accéder aux cours suivis</button>
-
-</div>
-
-
-
-</body-->

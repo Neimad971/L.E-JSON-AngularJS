@@ -3,15 +3,18 @@
 	
 	<head>
 		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular.js"></script>
-		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular-route.js"></script>
+		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular-route.js"></script>	    
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/jquery.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/ng-grid.js"></script>
+	    <script type="text/javascript" src="/learningengine/resources/js/lib2/jquery-ui.js"></script>
 	    <script type="text/javascript" src="/learningengine/resources/js/app.js"></script>
 	</head>
 	
 	<body ng-app="learningengine">
 
 	    <ul>
-	      <li><a href="#/app">Home</a></li>
-	      <li><a href="#/app/courses">All courses</a></li>
+	      <li><a ng-href="#/app">Home</a></li>
+	      <li><a ng-href="#/app/courses">All courses</a></li>
 	    </ul>
 	    
 	    <div ng-view=""></div>
