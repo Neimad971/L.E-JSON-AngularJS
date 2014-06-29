@@ -39,65 +39,60 @@
 	
 	app.controller('CourseController', ['$scope', '$http', '$location', function ($scope, $http, $location) 
 	{
-		$scope.message = "all courses page";
-		
-		
-         
+		 $scope.message = "all courses page";
+		 
+		 //do GET to find all courses
          $http.get('app/courses').success(function(allCourses)
 		 {
-            // $scope.courses = allCourses;
-             //alert(allCourses[0].name);
-        
+        	$scope.myData = allCourses;		// to feel ngGrid
+    		$scope.courses = allCourses;	//for databinding to the view 
+        	
+		 });
          
-		 });  
-         $scope.mySelections =[];
-         //prendre mes course plutot que mes données en dur
-		 $scope.myData = [{name: "fezfezf", desc : "ezdezdz", incription : false},
-		                  {name: "fezfezf", desc : "ezdezdz"},
-		                  {name: "fezfezf", desc : "ezdezdz"},
-		                  {name: "fezfezf", desc : "ezdezdz"},{name: "fezfezf", desc : "ezdezdz"},{name: "fezfezf", desc : "ezdezdz"}];
- 		
- 		 $scope.gridOptions = {
- 			data : 'myData',
- 			selectedItems : $scope.mySelections,
- 			multiSelection : false
- 		 };
- 		 
- 		 
- 		$scope.submitSelectedCourses = function (){
- 			alert("submit ok");
- 			
- 			var input = $scope.mySelections
- 			//creer une mothode pour faire un post
- 			//
- 			$http.post('app/courses', input).success()
- 		} ;
+         //set ngGrid properties  
+         $scope.mySelections = [];
+         $scope.myData = [];
+		 $scope.gridOptions = 
+		 {
+			data : 'myData',
+			selectedItems : $scope.mySelections,
+			multiSelection : false,
+			columnDefs: 
+				[{field:'name', displayName:'Intitule'},
+	             {field:'validated', displayName:'Validé'}]
+		 };
+	
+		 
+ 		//Follow one or several course(s) 
+		$scope.submitSelectedCourses = function ()
+		{
+			var selectedCourses = $scope.mySelections;
+	 		
+			// do POST to submit selected course(s)
+			$http.post('app/subscribe', selectedCourses).success(function()
+			{
+				alert("Vous etes maintenant inscrit au(x) cours que vous avez selectione(s)");
+			});
+			
+			
+		};
  		 
 		
-       
-    }]);
-	
-	
-	
-	app.controller('CourseDetailController', ['$scope', '$http', '$location','$routeParams', function ($scope, $http, $location, $routeParams) 
-	{
-		 
-         $scope.getCourseDetail = function(idCourse) 
-         {
-			 $http.get('app/courses/' + idCourse).success(function(oneCourse)
-	    	 {
-				 
-				 
-				 return $scope.test = oneCourse;
-				 
-				// $location.path('app/courses/'+idCourse);
-				 
-	    	 });
-        	 
-         };
-         
-         
+		//show my courses
+		$scope.getMyCourses = function ()
+		{
+			// do GET to find my course(s)
+			$http.get('app/mycourses').success(function(myCourses)
+			{
+				$scope.myData = myCourses;		// to feel ngGrid
+				$scope.courses = myCourses;	//for databinding to the view 
+			        	
+			});
+		};
 	}]);
+	
+	
+	
 	
 	
 

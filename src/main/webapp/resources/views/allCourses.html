@@ -18,18 +18,16 @@
 	
 	
 	<div class="gridStyle" ng-grid="gridOptions"></div> 
-	
 	<ul>
 		<li ng-repeat="item in mySelections">  
-		
-			<div>{{item.name}}</div>
-		
+			<div>{{item.description}}</div>
+			<div>En ligne : {{item.online}}</div>
+			<div>Suivi : {{item.followed}}</div>
 		</li>  
-  	
-	
 	</ul>
-	<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">s'inscrire aux cours selectionnés</button>
-	<button type="button" class="btn btn-success">Accéder aux cours suivis</button>
+	
+	<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">Suivre les cours selectionnés</button>
+	<button ng-click="getMyCourses()" type="button" class="btn btn-success">Mes cours</button>
 
 	
 </body>
