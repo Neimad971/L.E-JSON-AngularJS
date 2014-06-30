@@ -16,20 +16,49 @@ public class LearningEngineDatabase
 	{
 		courses = Lists.newArrayList();
 		followedCourses = Lists.newArrayList();
+		init();
+		
 	}
 	
-	 
+	
+	
 	private static LearningEngineDatabase getInstance()
 	{	
 		if (instance == null)
 		{
 			synchronized (LearningEngineDatabase.class) 
 			{
-				instance = new LearningEngineDatabase();
+				instance = new LearningEngineDatabase();	
 			}
 		}
 		
 		return instance;
+	}
+	
+	
+	private void init()
+	{
+		for(int i=0; i<3;i++)
+		{
+			Course c = new Course();
+			c.setIdCourse(i);
+			c.setName("course's name " +i);
+			c.setDescription("description " +i);
+			
+			if(i % 2 == 0)
+			{
+				c.setOnline(false);
+			}
+			else
+			{
+				c.setOnline(true);
+			}
+			
+			c.setValidated(false);
+			c.setFollowed(false);
+			courses.add(c);
+		
+		}
 	}
 	
 	

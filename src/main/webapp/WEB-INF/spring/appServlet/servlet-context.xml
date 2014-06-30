@@ -23,7 +23,7 @@
 		<beans:property name="suffix" value=".html" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.talsoft.learningengine.controllers" />
+	<context:component-scan base-package="com.talsoft.learningengine.*" />
 	
 	<context:annotation-config/> 
 
