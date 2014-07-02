@@ -28,6 +28,11 @@
           templateUrl: 'resources/views/asProfessor.html',
           controller: 'ProfessorController'
         }).
+        when('/app/assessments',
+                {
+                  templateUrl: 'resources/views/myAssessments.html',
+                  controller: 'AssessmentsController'
+                }).
         otherwise(
         {
           redirectTo: '/app'
@@ -155,10 +160,34 @@
 			{
 				alert("Le cours a ete poster");
 			});
-			
 		};
 		
  	}]);
+	
+	
+	app.controller('AssessmentsController', ['$scope', '$http', function ($scope, $http) 
+	{
+		$scope.message = "assessments";
+		
+		$http.get('app/assessments').success(function(myAssessments)
+		{
+			alert(typeof myAssessments);
+			$scope.myData = myAssessments;
+		});
+		
+		
+		//set ngGrid properties  
+        $scope.mySelections = [];
+        $scope.myData = [];
+		$scope.gridOptions = 
+		{
+			data : 'myData',
+			selectedItems : $scope.mySelections,
+			multiSelection : false,
+			columnDefs: 
+				[{field:'title', displayName:'Intitulé'}]
+		};
+	}]);
 	
 	
 
