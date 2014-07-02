@@ -2,6 +2,8 @@
 <html>
 	
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		
 		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular.js"></script>
 		<script type="text/javascript" src="/learningengine/resources/js/lib2/angular-route.js"></script>	    
 	    <script type="text/javascript" src="/learningengine/resources/js/lib2/jquery.js"></script>
@@ -11,16 +13,19 @@
 	</head>
 	
 	<body ng-app="learningengine">
-
-	    <ul>
-	      <li><a ng-href="#/app">Home</a></li>
-	      <li><a ng-href="#/app/courses">Tous les cours</a></li>
-	      <li><a ng-href="#/app/results">Mes resultats</a></li>
-	      <li><a ng-href="#/app/asProfessor">Actions professeur</a></li>
-	      <li><a ng-href="#/app/assessments">Evaluations</a></li>
-	    </ul>
-	    
-	    <div ng-view=""></div>
+	
+		<div style="margin: 10px" class=""> <!-- Conteneur menu -->		
+			<ul class="nav nav-pills col-md-9">
+		      <li><a ng-href="#/app"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+		      <li><a ng-href="#/app/courses"><span class="glyphicon glyphicon-book"></span> Tous les cours </a></li>
+		      <li><a ng-href="#/app/results"><span class="glyphicon glyphicon-list-alt"></span> Mes resultats </a></li>
+		      <li><a ng-href="#/app/asProfessor"><span class="glyphicon glyphicon-briefcase"></span> Actions professeur </a></li>
+			  <li><a ng-href="#/app/assessments"><span class="glyphicon glyphicon-th-list"> Evaluations</a></li>
+		    </ul>
+		</div>
+		<br><br><br><br>    
+		
+        <div ng-view=""></div> 
 		
 	</body>
 	
