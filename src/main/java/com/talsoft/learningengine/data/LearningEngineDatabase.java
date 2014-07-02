@@ -1,5 +1,7 @@
 package com.talsoft.learningengine.data;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -109,7 +111,7 @@ public class LearningEngineDatabase
 			Assessment a = new Assessment();
 			a.setIdAssessment(i);
 			a.setTitle("assessment's name " +i);
-			a.setDateOfAssessment(new DateTime(2014, 07, 02, 0, 0));
+			a.setDateOfAssessment(new DateTime());
 			a.setDuration(i + 2);
 			
 			assessments.add(a);
