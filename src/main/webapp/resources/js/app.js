@@ -61,7 +61,7 @@
 			selectedItems : $scope.mySelections,
 			multiSelection : false,
 			columnDefs: 
-				[{field:'name', displayName:'Intitule'},
+				[{field:'name', displayName:'Intitulé'},
 	             {field:'validated', displayName:'Validé'}]
 		 };
 	
@@ -144,6 +144,18 @@
 			{
 				alert("Le resultat a ete poster");
 			});
+		};
+		
+		
+		$scope.submitCourse = function ()
+		{
+			var course = $scope.courseForm;
+			
+			$http.post('app/dropoffcourse', course).success(function()
+			{
+				alert("Le cours a ete poster");
+			});
+			
 		};
 		
  	}]);

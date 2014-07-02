@@ -18,9 +18,21 @@ public class CourseDao
 	}
 
 	
-	public void insert(Course course) 
+	public void insertInMyCourses(Course course) 
 	{
 		LearningEngineDatabase.addMyCourse(course);
+	}
+	
+	
+	public void insert(Course course)
+	{
+		LearningEngineDatabase.addCourse(course);
+	}
+	
+	
+	public List<Course> findMyCourses() 
+	{
+		return LearningEngineDatabase.getMyCourses();
 	}
 
 }

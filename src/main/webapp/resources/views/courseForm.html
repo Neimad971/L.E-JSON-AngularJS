@@ -1,13 +1,17 @@
 <div ng-controller="ProfessorController as profCtrl">
   <form>
-    bla : <input type="text" ng-model="blabla" /><br />
-    ble : <input type="number" ng-model="blabla" /><br />
-    <button ng-click="blablantResult()">Valider</button>
+    Intitule : <input type="text" ng-model="courseForm.name" /><br />
+    Description : <input type="text" ng-model="courseForm.description" /><br />
+    En ligne  : <select ng-model="courseForm.online">
+    				<option value="true">Oui</option>
+    				<option value="false">Non</option>
+    			</select>
+    <button ng-click="submitCourse()">Valider</button>
   </form>
   
-  <pre>II = {{resultForm | json}}</pre>
+  <pre>form = {{courseForm | json}}</pre>
   
-  </div>
+</div>
   
   
   <!-- to update according to Course object -->
