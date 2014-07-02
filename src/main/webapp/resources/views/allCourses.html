@@ -15,19 +15,24 @@
 </head>
 
 <body ng-controller="CourseController as courseCtrl">
-	
-	
-	<div class="gridStyle" ng-grid="gridOptions"></div> 
-	<ul>
-		<li ng-repeat="item in mySelections">  
-			<div>{{item.description}}</div>
-			<div>En ligne : {{item.online && 'Oui' || 'Non'}}</div>
-			<div>Cours suivi : {{item.followed && 'Oui' || 'Non'}}</div>
-		</li>  
-	</ul>
-	
-	<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">Suivre les cours selectionnés</button>
-	<button ng-click="getMyCourses()" type="button" class="btn btn-success">Mes cours</button>
 
+	<div class="container">
+		<div class="panel panel-default">
+  			<div class="panel-heading">R�capitulatif des cours</div>	
+	
+				<div class="gridStyle" ng-grid="gridOptions"></div> 
+				<ul>
+					<li ng-repeat="item in mySelections">  
+						<div>{{item.description}}</div>
+						<div>En ligne : {{item.online && 'Oui' || 'Non'}}</div>
+						<div>Cours suivi : {{item.followed && 'Oui' || 'Non'}}</div>
+					</li>  
+				</ul>
+				
+				<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">Suivre les cours selectionnés</button>
+				<button ng-click="getMyCourses()" type="button" class="btn btn-success">Mes cours</button>
+
+		</div>
+	</div>
 	
 </body>
