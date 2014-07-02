@@ -3,20 +3,23 @@ package com.talsoft.learningengine.data;
 import java.util.List;
 
 import com.google.common.collect.Lists;
+import com.talsoft.learningengine.domain.AssessmentResult;
 import com.talsoft.learningengine.domain.Course;
 
 public class LearningEngineDatabase 
 {
 	private static  LearningEngineDatabase instance = null;
-	private List<Course> courses; // ALL COURSES
-	private List<Course> followedCourses;  //MY COURSES AS STUDENT
+	private List<Course> courses; 		   					// ALL COURSES
+	private List<Course> followedCourses;  					// MY COURSES AS STUDENT
+	private List<AssessmentResult> assessmentResults;		// MY RESULTS AS STUDENT
 	
 	
 	private LearningEngineDatabase() 
 	{
 		courses = Lists.newArrayList();
 		followedCourses = Lists.newArrayList();
-		init();
+		assessmentResults = Lists.newArrayList();
+		initDatabase();
 		
 	}
 	
@@ -35,8 +38,14 @@ public class LearningEngineDatabase
 		return instance;
 	}
 	
+	private void initDatabase()
+	{
+		initWithCourses();
+		initWithAssessmentResults();
+	}
 	
-	private void init()
+	
+	private void initWithCourses()
 	{
 		for(int i=0; i<3;i++)
 		{
@@ -56,8 +65,31 @@ public class LearningEngineDatabase
 			
 			c.setValidated(false);
 			c.setFollowed(false);
+			
 			courses.add(c);
-		
+		}
+	}
+	
+	
+	private void initWithAssessmentResults()
+	{
+		for(int i=0; i<3;i++)
+		{
+			AssessmentResult ar = new AssessmentResult();
+			ar.setIdAssessmentResult(i);
+			ar.setAssessmentName("assessment's name " +i);
+			ar.setScore(i * 10);
+			
+			if(ar.getScore() < 10)
+			{
+				ar.setStatus(false);
+			}
+			else
+			{
+				ar.setStatus(true);
+			}	
+			
+			assessmentResults.add(ar);
 		}
 	}
 	
@@ -84,6 +116,19 @@ public class LearningEngineDatabase
 	{
 		getInstance().getFollowedCourses().add(course);
 	}
+	
+	
+	public static List<AssessmentResult> getMyAssessmentResults()
+	{
+		return getInstance().getAssessmentResults();
+	}
+	
+
+	public static void addAssessmentResults(AssessmentResult assessmentResult)
+	{
+		getInstance().getAssessmentResults().add(assessmentResult);
+	}
+
 
 
 	private List<Course> getCourses() 
@@ -99,37 +144,17 @@ public class LearningEngineDatabase
 
 
 
+	public List<AssessmentResult> getAssessmentResults() 
+	{
+		return assessmentResults;
+	}
+	
+	
+	
+
+
+
 
 	
-	
-	
-	
-	
-	
-	/*public static List<Tag> getAllTags()
-	{
-		return getInstance().getTags();
-	}
-	
-	
-	public static void addTag(Tag tag)
-	{
-		getInstance().getTags().add(tag);
-	}
-	
-	
-	public static List<Note> getAllNotesWithTagName(String tagName)
-	{
-		List<Note> filteredList = Lists.newArrayList();
-		
-		for(Note current : getInstance().getNotes())
-		{
-			if(current.getTagName().equalsIgnoreCase(tagName))
-			{
-				filteredList.add(current);
-			}
-		}
-		
-		return filteredList;
-	}*/
+
 }

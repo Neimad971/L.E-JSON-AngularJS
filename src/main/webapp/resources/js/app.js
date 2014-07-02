@@ -18,10 +18,15 @@
           templateUrl: 'resources/views/allCourses.html',
           controller: 'CourseController'
         }).
-        when('/app/courses/:courseId',
+        when('/app/results',
         {
-          templateUrl: 'resources/views/oneCourse.html',
-          controller: 'CourseDetailController'
+          templateUrl: 'resources/views/myResults.html',
+          controller: 'AssessementResultController'
+        }).
+        when('/app/asProfessor',
+        {
+          templateUrl: 'resources/views/asProfessor.html',
+          controller: 'ProfessorController'
         }).
         otherwise(
         {
@@ -37,7 +42,7 @@
 	
 	
 	
-	app.controller('CourseController', ['$scope', '$http', '$location', function ($scope, $http, $location) 
+	app.controller('CourseController', ['$scope', '$http', function ($scope, $http) 
 	{
 		 $scope.message = "all courses page";
 		 
@@ -45,8 +50,6 @@
          $http.get('app/courses').success(function(allCourses)
 		 {
         	$scope.myData = allCourses;		// to feel ngGrid
-    		$scope.courses = allCourses;	//for databinding to the view 
-        	
 		 });
          
          //set ngGrid properties  
@@ -72,6 +75,7 @@
 			$http.post('app/subscribe', selectedCourses).success(function()
 			{
 				alert("Vous etes maintenant inscrit au(x) cours que vous avez selectione(s)");
+				//$route.reload();
 			});
 			
 			
@@ -85,14 +89,64 @@
 			$http.get('app/mycourses').success(function(myCourses)
 			{
 				$scope.myData = myCourses;		// to feel ngGrid
-				$scope.courses = myCourses;	//for databinding to the view 
-			        	
 			});
 		};
 	}]);
 	
 	
+	app.controller('AssessementResultController', ['$scope', '$http', function ($scope, $http) 
+  	{
+		$scope.message = "assessementResult";
+		
+		//do GET to find my results
+        $http.get('app/results').success(function(myResults)
+		{
+        	$scope.myData = myResults;		// to feel ngGrid
+		});
+        
+        //set ngGrid properties  
+        $scope.mySelections = [];
+        $scope.myData = [];
+		 $scope.gridOptions = 
+		 {
+			data : 'myData',
+			selectedItems : $scope.mySelections,
+			multiSelection : false,
+			columnDefs: 
+				[{field:'assessmentName', displayName:'Cours'}]
+		 };
+    }]);
 	
+	
+	app.controller('ProfessorController', ['$scope', '$http', function ($scope, $http) 
+ 	{
+		$scope.message = "professor";
+		
+		$scope.items = ['dropOffResult', 'addCourse'];
+		
+		
+		$scope.dropOffResult = function ()
+		{
+			$scope.selection = $scope.items[0];
+		};
+		
+		$scope.addCourse = function ()
+		{
+			$scope.selection = $scope.items[1];
+		};
+		
+		
+		$scope.submitAssessmentResult = function ()
+		{
+			var result = $scope.resultForm;
+			
+			$http.post('app/dropoffresult', result).success(function()
+			{
+				alert("Le resultat a ete poster");
+			});
+		};
+		
+ 	}]);
 	
 	
 

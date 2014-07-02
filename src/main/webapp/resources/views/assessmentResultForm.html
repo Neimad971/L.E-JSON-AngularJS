@@ -1,0 +1,11 @@
+<div ng-controller="ProfessorController as profCtrl">
+  <form>
+    Cours : <input type="text" ng-model="resultForm.assessmentName" /><br />
+    Note : <input type="number" ng-model="resultForm.score" /><br />
+    <button ng-click="submitAssessmentResult()">Valider</button>
+  </form>
+  
+  <pre>II = {{resultForm | json}}</pre>
+  
+  </div>
+
