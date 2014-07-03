@@ -22,7 +22,7 @@ public class LearningEngineDatabaseUnitTest {
 	@Test
 	public void test_getAllCourses() {
 		List<Course> coursesList = LearningEngineDatabase.getAllCourses();
-		Assert.assertTrue(coursesList.size() == 3);
+		Assert.assertEquals(coursesList.size(), 4);
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class LearningEngineDatabaseUnitTest {
 		LearningEngineDatabase.addCourse(course);
 		Assert.assertTrue(LearningEngineDatabase.getAllCourses().contains(course));
 		
-		LearningEngineDatabase.getMyCourses().clear();
+		LearningEngineDatabase.getMyCourses().remove(course);
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ public class LearningEngineDatabaseUnitTest {
 		LearningEngineDatabase.addAssessmentResults(assessmentResult);
 		Assert.assertTrue(LearningEngineDatabase.getMyAssessmentResults().contains(assessmentResult));
 		
-		LearningEngineDatabase.getMyAssessmentResults().clear();
+		LearningEngineDatabase.getMyAssessmentResults().remove(assessmentResult);
 	}
 	
 	@Test
@@ -85,6 +85,6 @@ public class LearningEngineDatabaseUnitTest {
 		LearningEngineDatabase.addAssessment(assessment);
 		Assert.assertTrue(LearningEngineDatabase.getMyAssessments().contains(assessment));
 		
-		LearningEngineDatabase.getMyAssessments().clear();
+		LearningEngineDatabase.getMyAssessments().remove(assessment);
 	}
 }

@@ -21,7 +21,7 @@ public class AssessmentResultDaoUnitTest {
 	@Test
 	public void test_findAll() {
 		List<AssessmentResult> assessementResultList = assessmentResultDao.findAll();
-		Assert.assertTrue(assessementResultList.size() == 3);
+		Assert.assertEquals(assessementResultList.size(), 3);
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ public class AssessmentResultDaoUnitTest {
 		assessmentResultDao.insert(assessmentResult);
 		Assert.assertTrue(LearningEngineDatabase.getMyAssessmentResults().contains(assessmentResult));
 		
-		LearningEngineDatabase.getMyAssessmentResults().clear();
+		LearningEngineDatabase.getMyAssessmentResults().remove(assessmentResult);
 	}
 	
 }

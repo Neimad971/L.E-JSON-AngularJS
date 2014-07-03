@@ -33,6 +33,6 @@ public class CourseDaoUnitTest {
 		LearningEngineDatabase.addMyCourse(course);
 		Assert.assertTrue(LearningEngineDatabase.getMyCourses().contains(course));
 		
-		LearningEngineDatabase.getMyCourses().clear();
+		LearningEngineDatabase.getMyCourses().remove(course);
 	}
 }
