@@ -1,11 +1,14 @@
 <link href="./resources/css/home.css" rel="stylesheet" type="text/css" media="screen" />
 
 <div ng-controller="ProfessorController as profCtrl">
-  <form>
-    <label for="cours">Cours :</label><input type="text" id="cours" ng-model="resultForm.assessmentName" /><br />
-    <label for="note">Note :</label><input type="number" id="note" min="0" max="20" id="note" ng-model="resultForm.score" /><br />
-    <button ng-click="submitAssessmentResult()">Valider</button>
-  </form>
+  <div class="panel panel-default">
+	  <div class="panel-heading">Depot d'un resultat</div>	
+	  <form>
+	    <label for="cours">Cours :</label><input type="text" class="focus-color" id="cours" ng-model="resultForm.assessmentName" /><br />
+	    <label for="note">Note :</label><input type="number" class="focus-color" id="note" min="0" max="20" id="note" ng-model="resultForm.score" /><br />
+	    <button ng-click="submitAssessmentResult()">Valider</button>
+	  </form>
+  </div>
   
   <pre>form = {{resultForm | json}}</pre>
   

@@ -1,16 +1,18 @@
 <link href="./resources/css/home.css" rel="stylesheet" type="text/css" media="screen" />
 
 <div ng-controller="ProfessorController as profCtrl">
-  <form>
-    <label for="intitule">Intitule :</label><input type="text" id="intitule" ng-model="courseForm.name" /><br />
-    <label for="description">Description :</label><input type="text" id="description" ng-model="courseForm.description" /><br />
-    <label for="enligne">En ligne  :</label><select id="enligne" ng-model="courseForm.online">
-    				<option value="true">Oui</option>
-    				<option value="false">Non</option>
-    			</select>
-    <button ng-click="submitCourse()">Valider</button>
-  </form>
-  
+  <div class="panel panel-default">
+	  <div class="panel-heading">Ajout d'un cours</div>	
+	  <form>
+	    <label for="intitule">Intitule :</label><input type="text" class="focus-color" id="intitule" ng-model="courseForm.name" /><br />
+	    <label for="description">Description :</label><input type="text" class="focus-color" id="description" ng-model="courseForm.description" /><br />
+	    <label for="enligne">En ligne  :</label><select id="enligne" class="focus-color" ng-model="courseForm.online">
+	    				<option value="true">Oui</option>
+	    				<option value="false">Non</option>
+	    			</select>
+	    <button ng-click="submitCourse()">Valider</button>
+	  </form>
+  </div>
   <pre>form = {{courseForm | json}}</pre>
   
 </div>
