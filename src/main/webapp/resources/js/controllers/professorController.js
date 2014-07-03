@@ -27,7 +27,7 @@ app.controller('ProfessorController', ['$scope', '$http', '$route', function ($s
 		
 		$http.post('app/dropoffresult', result).success(function()
 		{
-			alert("Le resultat a ete posté");
+			alert("Le resultat a ete poste");
 			$route.reload();
 		});
 	};
@@ -39,7 +39,7 @@ app.controller('ProfessorController', ['$scope', '$http', '$route', function ($s
 		
 		$http.post('app/dropoffcourse', course).success(function()
 		{
-			alert("Le cours a ete posté");
+			alert("Le cours a ete poste");
 			$route.reload();
 		});
 	};
@@ -50,7 +50,7 @@ app.controller('ProfessorController', ['$scope', '$http', '$route', function ($s
 		
 		$http.post('app/dropoffassessment', assessment).success(function()
 		{
-			alert("L'évaluation a ete posté");
+			alert("L'evaluation a ete poste");
 			$route.reload();
 		});
 		

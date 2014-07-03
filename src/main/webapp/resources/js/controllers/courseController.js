@@ -18,8 +18,8 @@ app.controller('CourseController', ['$scope', '$http', '$route', function ($scop
 		selectedItems : $scope.mySelections,
 		multiSelection : false,
 		columnDefs: 
-			[{field:'name', displayName:'Intitulé'},
-             {field:'validated', displayName:'Validé'}]
+			[{field:'name', displayName:'Intitule'},
+             {field:'validated', displayName:'Valide'}]
 	 };
 
 	 

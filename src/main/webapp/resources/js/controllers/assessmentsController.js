@@ -17,6 +17,6 @@ app.controller('AssessmentsController', ['$scope', '$http', function ($scope, $h
 		selectedItems : $scope.mySelections,
 		multiSelection : false,
 		columnDefs: 
-			[{field:'title', displayName:'Intitulé'}]
+			[{field:'title', displayName:'Intitule'}]
 	};
 }]);
