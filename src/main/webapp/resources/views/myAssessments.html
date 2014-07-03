@@ -15,11 +15,18 @@
 
 
 <body ng-controller="AssessmentsController as assessementsCtrl">
-	<div class="gridStyle" ng-grid="gridOptions"></div> 
-	<ul>
-		<li ng-repeat="item in mySelections">  
-			<div>Date : {{item.dateOfAssessment | date:'EEEE d MMMM yyyy'}}</div>
-			<div>duree : {{item.duration}}H</div>
-		</li>  
-	</ul>
+
+	<div class="container col-md-4">
+		<div class="panel panel-default">
+  			<div class="panel-heading">Mes Evaluations</div>	
+  			
+				<div class="gridStyle" ng-grid="gridOptions"></div> 
+				<ul>
+					<li ng-repeat="item in mySelections">  
+						<div>Date : {{item.dateOfAssessment | date:'EEEE d MMMM yyyy'}}</div>
+						<div>duree : {{item.duration}}H</div>
+					</li>  
+				</ul>
+		</div>
+	</div>	
 </body>
