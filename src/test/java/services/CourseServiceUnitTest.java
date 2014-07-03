@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 
@@ -37,6 +38,8 @@ public class CourseServiceUnitTest {
 		EasyMock.replay(mCourseDao);
 		List<Course> coursesListExpected = courseService.showAllCourses();
 		EasyMock.verify(mCourseDao);
+		
+		Assert.assertEquals(coursesList.size(), coursesListExpected.size());
 		
 	}
 }

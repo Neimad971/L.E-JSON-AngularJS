@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.talsoft.learningengine.dao.AssessmentResultDao;
+import com.talsoft.learningengine.data.LearningEngineDatabase;
 import com.talsoft.learningengine.domain.AssessmentResult;
 
 public class AssessmentResultDaoUnitTest {
@@ -20,7 +21,7 @@ public class AssessmentResultDaoUnitTest {
 	@Test
 	public void test_findAll() {
 		List<AssessmentResult> assessementResultList = assessmentResultDao.findAll();
-		Assert.assertTrue(assessementResultList.size() > 0);
+		Assert.assertTrue(assessementResultList.size() == 3);
 	}
 	
 	@Test
@@ -32,6 +33,9 @@ public class AssessmentResultDaoUnitTest {
 		assessmentResult.setStatus(true);
 		
 		assessmentResultDao.insert(assessmentResult);
+		Assert.assertTrue(LearningEngineDatabase.getMyAssessmentResults().contains(assessmentResult));
+		
+		LearningEngineDatabase.getMyAssessmentResults().clear();
 	}
 	
 }

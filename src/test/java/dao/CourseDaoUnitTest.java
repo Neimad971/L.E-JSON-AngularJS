@@ -18,7 +18,7 @@ public class CourseDaoUnitTest {
 	@Test
 	public void test_findAll() {
 		List<Course> coursesList = LearningEngineDatabase.getAllCourses();
-		Assert.assertTrue(coursesList.size() > 0);
+		Assert.assertTrue(coursesList.size() == 3);
 	}
 	
 	@Test
@@ -32,5 +32,7 @@ public class CourseDaoUnitTest {
 		
 		LearningEngineDatabase.addMyCourse(course);
 		Assert.assertTrue(LearningEngineDatabase.getMyCourses().contains(course));
+		
+		LearningEngineDatabase.getMyCourses().clear();
 	}
 }
