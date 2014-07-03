@@ -71,4 +71,8 @@ public class CourseService
 		return coursesFromJSON;
 		
 	}
+	
+	public CourseDao getCourseDao() {
+		return courseDao;
+	}
 }

@@ -24,7 +24,6 @@ public class LearningEngineDatabase
 	}
 	
 	
-	
 	private static LearningEngineDatabase getInstance()
 	{	
 		if (instance == null)
@@ -148,13 +147,6 @@ public class LearningEngineDatabase
 	{
 		return assessmentResults;
 	}
-	
-	
-	
-
-
-
-
 	
 
 }
