@@ -3,7 +3,7 @@
 <div ng-controller="ProfessorController as profCtrl">
   <form>
     <label for="cours">Cours :</label><input type="text" id="cours" ng-model="resultForm.assessmentName" /><br />
-    <label for="note">Note :</label><input type="number" min="0" max="20" id="note" ng-model="resultForm.score" /><br />
+    <label for="note">Note :</label><input type="number" id="note" min="0" max="20" id="note" ng-model="resultForm.score" /><br />
     <button ng-click="submitAssessmentResult()">Valider</button>
   </form>
   
