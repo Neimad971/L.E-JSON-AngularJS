@@ -49,7 +49,7 @@ public class LearningEngineDatabaseUnitTest {
 		
 		LearningEngineDatabase.addMyCourse(course);
 		List<Course> coursesList = LearningEngineDatabase.getMyCourses();
-		Assert.assertEquals(coursesList.get(0), course);
+		Assert.assertEquals(coursesList.size(), 2);
 	}
 	
 	@Test
