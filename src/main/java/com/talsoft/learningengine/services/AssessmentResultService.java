@@ -6,12 +6,12 @@ import java.util.List;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.talsoft.learningengine.dao.AssessmentResultDao;
 import com.talsoft.learningengine.domain.AssessmentResult;
+import com.talsoft.learningengine.domain.Course;
 
 @Component
 public class AssessmentResultService 
@@ -39,6 +39,12 @@ public class AssessmentResultService
 	public String dropOffAssessementResult(String result) 
 	{
 		AssessmentResult aResult = convertJsonAssessmentResultToAssessmentResult(result); 
+		
+		if(aResult.getScore() >= 10)
+		{
+			aResult.setStatus(true);
+		}
+		
 		aResultDao.insert(aResult);
 		
 		return result;
@@ -52,7 +58,7 @@ public class AssessmentResultService
 		AssessmentResult aResultFromJSON = null;
 		try 
 		{
-			aResultFromJSON = mapper.readValue(jsonString, AssessmentResult.class); //readValue(jsonString, new TypeReference() {}, A);
+			aResultFromJSON = mapper.readValue(jsonString, AssessmentResult.class); 
 		} 
 		catch (JsonParseException e) 
 		{
@@ -69,6 +75,9 @@ public class AssessmentResultService
 		}
 		
 		return aResultFromJSON;
-		
 	}
+	
+	
+	
 }
+

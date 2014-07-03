@@ -3,7 +3,7 @@
 //(function()
 //{*
 	
-	var app = angular.module('learningengine',['ngRoute', 'ngGrid']);
+	var app = angular.module('learningengine',['ngRoute', 'ngGrid', 'ui.bootstrap']);
 	
 	app.config(['$routeProvider', function($routeProvider) 
 	{
@@ -28,6 +28,11 @@
           templateUrl: 'resources/views/asProfessor.html',
           controller: 'ProfessorController'
         }).
+        when('/app/assessments',
+        {
+          templateUrl: 'resources/views/myAssessments.html',
+          controller: 'AssessmentsController'
+        }).
         otherwise(
         {
           redirectTo: '/app'
@@ -42,7 +47,7 @@
 	
 	
 	
-	app.controller('CourseController', ['$scope', '$http', function ($scope, $http) 
+	app.controller('CourseController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
 	{
 		 $scope.message = "all courses page";
 		 
@@ -61,7 +66,7 @@
 			selectedItems : $scope.mySelections,
 			multiSelection : false,
 			columnDefs: 
-				[{field:'name', displayName:'Intitule'},
+				[{field:'name', displayName:'Intitulé'},
 	             {field:'validated', displayName:'Validé'}]
 		 };
 	
@@ -75,7 +80,7 @@
 			$http.post('app/subscribe', selectedCourses).success(function()
 			{
 				alert("Vous etes maintenant inscrit au(x) cours que vous avez selectione(s)");
-				//$route.reload();
+				$route.reload();
 			});
 			
 			
@@ -118,11 +123,11 @@
     }]);
 	
 	
-	app.controller('ProfessorController', ['$scope', '$http', function ($scope, $http) 
+	app.controller('ProfessorController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
  	{
 		$scope.message = "professor";
 		
-		$scope.items = ['dropOffResult', 'addCourse'];
+		$scope.items = ['dropOffResult', 'addCourse', 'addAssessment'];
 		
 		
 		$scope.dropOffResult = function ()
@@ -135,6 +140,11 @@
 			$scope.selection = $scope.items[1];
 		};
 		
+		$scope.addAssessment = function ()
+		{
+			$scope.selection = $scope.items[2];
+		};
+		
 		
 		$scope.submitAssessmentResult = function ()
 		{
@@ -142,11 +152,112 @@
 			
 			$http.post('app/dropoffresult', result).success(function()
 			{
-				alert("Le resultat a ete poster");
+				alert("Le resultat a ete posté");
+				$route.reload();
 			});
 		};
 		
+		
+		$scope.submitCourse = function ()
+		{
+			var course = $scope.courseForm;
+			
+			$http.post('app/dropoffcourse', course).success(function()
+			{
+				alert("Le cours a ete posté");
+				$route.reload();
+			});
+		};
+		
+		$scope.submitAssessment = function ()
+		{
+			var assessment = $scope.assessmentForm;
+			
+			$http.post('app/dropoffassessment', assessment).success(function()
+			{
+				alert("L'évaluation a ete posté");
+				$route.reload();
+			});
+			
+		};
+		
+		
  	}]);
+	
+	
+	app.controller('DatepickerDemoCtrl',['$scope', function($scope)
+	{
+		$scope.today = function() 
+		{
+			$scope.dt = new Date();
+		};
+	    $scope.today();
+	
+	    
+	    $scope.clear = function () 
+	    {
+	    	$scope.dt = null;
+	    };
+	
+	    // Disable weekend selection
+	    $scope.disabled = function(date, mode) 
+	    {
+	    	return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+	    };
+	
+	  
+	    $scope.toggleMin = function() 
+	    {
+	    	$scope.minDate = $scope.minDate ? null : new Date();
+	    };
+	    $scope.toggleMin();
+	    
+	
+	    $scope.open = function($event) 
+	    {
+	    	$event.preventDefault();
+	    	$event.stopPropagation();
+	
+	    	$scope.opened = true;
+	    };
+	
+	  
+	    $scope.dateOptions = 
+	    {
+    		formatYear: 'yy',
+    		startingDay: 1
+	    };
+	
+	  
+	    $scope.initDate = new Date('2016-15-20');
+	    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'EEEE d MMMM yyyy'];
+	    $scope.format = $scope.formats[4];
+		
+	}]);
+	
+	
+	app.controller('AssessmentsController', ['$scope', '$http', function ($scope, $http) 
+	{
+		$scope.message = "assessments";
+		
+		$http.get('app/assessments').success(function(myAssessments)
+		{
+			$scope.myData = myAssessments;
+		});
+		
+		
+		//set ngGrid properties  
+        $scope.mySelections = [];
+        $scope.myData = [];
+		$scope.gridOptions = 
+		{
+			data : 'myData',
+			selectedItems : $scope.mySelections,
+			multiSelection : false,
+			columnDefs: 
+				[{field:'title', displayName:'Intitulé'}]
+		};
+	}]);
 	
 	
 

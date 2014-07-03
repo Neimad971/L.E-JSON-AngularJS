@@ -97,3 +97,9 @@ text-transform:inherit;
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
 color:#000;
 }
+label
+{
+	display: block;
+	width: 150px;
+	float: left;
+}

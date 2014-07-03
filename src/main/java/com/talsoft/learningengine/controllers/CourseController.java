@@ -60,6 +60,16 @@ public class CourseController
 	}
 	
 	
+	@RequestMapping(value="/dropoffcourse", method = RequestMethod.POST, produces = "application/json",headers="Accept=application/json")
+	@ResponseBody 
+	public String dropOffCourse(@RequestBody String course) 
+	{    
+		courseService.dropOffCourse(course);
+		
+	    return course;
+	}
+	
+	
 	
 	
 	

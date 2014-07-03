@@ -15,13 +15,19 @@
 
 
 <body ng-controller="AssessementResultController as resultCtrl">
-	
-	<div class="gridStyle" ng-grid="gridOptions"></div> 
-	<ul>
-		<li ng-repeat="item in mySelections">  
-			<div>Note : {{item.score}}</div>
-			<div>Statut : {{item.status && 'Reussi' || 'Echec'}}</div>
-		</li>  
-	</ul>
+	<div class="container col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading"> Mes Notes</div>
+				
+				<div class="gridStyle" ng-grid="gridOptions"></div> 
+				<ul>
+					<li ng-repeat="item in mySelections">  
+						<div>Note : {{item.score}}</div>
+						<div>Statut : {{item.status && 'Reussi' || 'Echec'}}</div>
+					</li>  
+				</ul>
+
+		</div>
+	</div>
 	
 </body>

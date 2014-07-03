@@ -1,4 +1,3 @@
-
 <link href="./resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="./resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
@@ -14,25 +13,20 @@
     <script type="text/javascript" src="/learningengine/resources/js/app.js"></script>
 </head>
 
-<body ng-controller="CourseController as courseCtrl">
+
+<body ng-controller="AssessmentsController as assessementsCtrl">
 
 	<div class="container col-md-4">
 		<div class="panel panel-default">
-  			<div class="panel-heading">Recapitulatif des cours</div>	
-	
+  			<div class="panel-heading">Mes Evaluations</div>	
+  			
 				<div class="gridStyle" ng-grid="gridOptions"></div> 
 				<ul>
 					<li ng-repeat="item in mySelections">  
-						<div>{{item.description}}</div>
-						<div>En ligne : {{item.online && 'Oui' || 'Non'}}</div>
-						<div>Cours suivi : {{item.followed && 'Oui' || 'Non'}}</div>
+						<div>Date : {{item.dateOfAssessment | date:'EEEE d MMMM yyyy'}}</div>
+						<div>duree : {{item.duration}}H</div>
 					</li>  
 				</ul>
-				
-				<button ng-click="submitSelectedCourses()" type="button" class="btn btn-success">Suivre les cours selectionnés</button>
-				<button ng-click="getMyCourses()" type="button" class="btn btn-success">Mes cours</button>
-
 		</div>
-	</div>
-	
+	</div>	
 </body>

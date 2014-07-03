@@ -2,7 +2,10 @@ package com.talsoft.learningengine.data;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import com.google.common.collect.Lists;
+import com.talsoft.learningengine.domain.Assessment;
 import com.talsoft.learningengine.domain.AssessmentResult;
 import com.talsoft.learningengine.domain.Course;
 
@@ -12,6 +15,7 @@ public class LearningEngineDatabase
 	private List<Course> courses; 		   					// ALL COURSES
 	private List<Course> followedCourses;  					// MY COURSES AS STUDENT
 	private List<AssessmentResult> assessmentResults;		// MY RESULTS AS STUDENT
+	private List<Assessment> assessments;
 	
 	
 	private LearningEngineDatabase() 
@@ -19,6 +23,8 @@ public class LearningEngineDatabase
 		courses = Lists.newArrayList();
 		followedCourses = Lists.newArrayList();
 		assessmentResults = Lists.newArrayList();
+		assessments = Lists.newArrayList();
+		
 		initDatabase();
 		
 	}
@@ -37,10 +43,12 @@ public class LearningEngineDatabase
 		return instance;
 	}
 	
+	
 	private void initDatabase()
 	{
 		initWithCourses();
 		initWithAssessmentResults();
+		initWithAssessments();
 	}
 	
 	
@@ -76,7 +84,7 @@ public class LearningEngineDatabase
 		{
 			AssessmentResult ar = new AssessmentResult();
 			ar.setIdAssessmentResult(i);
-			ar.setAssessmentName("assessment's name " +i);
+			ar.setAssessmentName("assessment result's name " +i);
 			ar.setScore(i * 10);
 			
 			if(ar.getScore() < 10)
@@ -89,6 +97,21 @@ public class LearningEngineDatabase
 			}	
 			
 			assessmentResults.add(ar);
+		}
+	}
+	
+	
+	private void initWithAssessments()
+	{
+		for(int i=0; i<3;i++)
+		{
+			Assessment a = new Assessment();
+			a.setIdAssessment(i);
+			a.setTitle("assessment's name " +i);
+			a.setDateOfAssessment(new DateTime());
+			a.setDuration(i + 2);
+			
+			assessments.add(a);
 		}
 	}
 	
@@ -127,6 +150,18 @@ public class LearningEngineDatabase
 	{
 		getInstance().getAssessmentResults().add(assessmentResult);
 	}
+	
+	
+	public static List<Assessment> getMyAssessments()
+	{
+		return getInstance().getAssessments();
+	}
+	
+
+	public static void addAssessment(Assessment assessment)
+	{
+		getInstance().getAssessments().add(assessment);
+	}
 
 
 
@@ -143,10 +178,14 @@ public class LearningEngineDatabase
 
 
 
-	public List<AssessmentResult> getAssessmentResults() 
+	private List<AssessmentResult> getAssessmentResults() 
 	{
 		return assessmentResults;
 	}
-	
 
+
+	private List<Assessment> getAssessments()
+	{
+		return assessments;
+	}
 }

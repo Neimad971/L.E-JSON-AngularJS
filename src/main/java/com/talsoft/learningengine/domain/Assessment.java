@@ -9,8 +9,7 @@ public class Assessment
 	private int idAssessment;
 	private String title;
 	private DateTime dateOfAssessment;
-	private int daration;
-	private AssessmentResult assessmentResult;
+	private int duration;
 
 
 	public int getIdAssessment() 
@@ -49,29 +48,14 @@ public class Assessment
 	}
 
 
-	public int getDaration() 
+	public int getDuration() 
 	{
-		return daration;
+		return duration;
 	}
 
 
-	public void setDaration(int daration) 
+	public void setDuration(int duration) 
 	{
-		this.daration = daration;
+		this.duration = duration;
 	}
-
-
-	public AssessmentResult getAssessmentResult() 
-	{
-		return assessmentResult;
-	}
-
-
-	public void setAssessmentResult(AssessmentResult assessmentResult) 
-	{
-		this.assessmentResult = assessmentResult;
-	}
-	
-	
-	
 }
