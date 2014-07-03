@@ -1,7 +1,5 @@
 'use strict';
 
-//(function()
-//{*
 	
 	var app = angular.module('learningengine',['ngRoute', 'ngGrid', 'ui.bootstrap']);
 	
@@ -40,14 +38,14 @@
     }]);
 
 	
-	app.controller('HomeController', ['$scope', function ($scope) 
+	/*app.controller('HomeController', ['$scope', function ($scope) 
 	{
          $scope.message = "home page";
-    }]);
+    }]);*/
 	
 	
 	
-	app.controller('CourseController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
+	/*app.controller('CourseController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
 	{
 		 $scope.message = "all courses page";
 		 
@@ -96,10 +94,10 @@
 				$scope.myData = myCourses;		// to feel ngGrid
 			});
 		};
-	}]);
+	}]);*/
 	
 	
-	app.controller('AssessementResultController', ['$scope', '$http', function ($scope, $http) 
+	/*app.controller('AssessementResultController', ['$scope', '$http', function ($scope, $http) 
   	{
 		$scope.message = "assessementResult";
 		
@@ -120,10 +118,10 @@
 			columnDefs: 
 				[{field:'assessmentName', displayName:'Cours'}]
 		 };
-    }]);
+    }]);*/
 	
 	
-	app.controller('ProfessorController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
+	/*app.controller('ProfessorController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
  	{
 		$scope.message = "professor";
 		
@@ -182,10 +180,10 @@
 		};
 		
 		
- 	}]);
+ 	}]);*/
 	
 	
-	app.controller('DatepickerDemoCtrl',['$scope', function($scope)
+	/*app.controller('DatepickerDemoCtrl',['$scope', function($scope)
 	{
 		$scope.today = function() 
 		{
@@ -233,10 +231,10 @@
 	    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'EEEE d MMMM yyyy'];
 	    $scope.format = $scope.formats[4];
 		
-	}]);
+	}]);*/
 	
 	
-	app.controller('AssessmentsController', ['$scope', '$http', function ($scope, $http) 
+	/*app.controller('AssessmentsController', ['$scope', '$http', function ($scope, $http) 
 	{
 		$scope.message = "assessments";
 		
@@ -257,9 +255,4 @@
 			columnDefs: 
 				[{field:'title', displayName:'Intitulé'}]
 		};
-	}]);
-	
-	
-
-
-//})();
+	}]);*/
