@@ -33,6 +33,7 @@ public class CourseService
 		
 		for(Course current : coursesFromJSON)
 		{
+			current.setFollowed(true);
 			courseDao.insertInMyCourses(current);
 		}
 		

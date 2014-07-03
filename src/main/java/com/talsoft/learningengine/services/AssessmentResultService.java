@@ -39,6 +39,12 @@ public class AssessmentResultService
 	public String dropOffAssessementResult(String result) 
 	{
 		AssessmentResult aResult = convertJsonAssessmentResultToAssessmentResult(result); 
+		
+		if(aResult.getScore() >= 10)
+		{
+			aResult.setStatus(true);
+		}
+		
 		aResultDao.insert(aResult);
 		
 		return result;

@@ -29,10 +29,10 @@
           controller: 'ProfessorController'
         }).
         when('/app/assessments',
-                {
-                  templateUrl: 'resources/views/myAssessments.html',
-                  controller: 'AssessmentsController'
-                }).
+        {
+          templateUrl: 'resources/views/myAssessments.html',
+          controller: 'AssessmentsController'
+        }).
         otherwise(
         {
           redirectTo: '/app'
@@ -47,7 +47,7 @@
 	
 	
 	
-	app.controller('CourseController', ['$scope', '$http', function ($scope, $http) 
+	app.controller('CourseController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
 	{
 		 $scope.message = "all courses page";
 		 
@@ -80,7 +80,7 @@
 			$http.post('app/subscribe', selectedCourses).success(function()
 			{
 				alert("Vous etes maintenant inscrit au(x) cours que vous avez selectione(s)");
-				//$route.reload();
+				$route.reload();
 			});
 			
 			
@@ -123,7 +123,7 @@
     }]);
 	
 	
-	app.controller('ProfessorController', ['$scope', '$http', function ($scope, $http) 
+	app.controller('ProfessorController', ['$scope', '$http', '$route', function ($scope, $http, $route) 
  	{
 		$scope.message = "professor";
 		
@@ -153,6 +153,7 @@
 			$http.post('app/dropoffresult', result).success(function()
 			{
 				alert("Le resultat a ete posté");
+				$route.reload();
 			});
 		};
 		
@@ -164,6 +165,7 @@
 			$http.post('app/dropoffcourse', course).success(function()
 			{
 				alert("Le cours a ete posté");
+				$route.reload();
 			});
 		};
 		
@@ -174,6 +176,7 @@
 			$http.post('app/dropoffassessment', assessment).success(function()
 			{
 				alert("L'évaluation a ete posté");
+				$route.reload();
 			});
 		};
 		
