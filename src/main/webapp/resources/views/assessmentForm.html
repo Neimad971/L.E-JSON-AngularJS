@@ -1,8 +1,10 @@
+<link href="./resources/css/home.css" rel="stylesheet" type="text/css" media="screen" />
+
 <div ng-controller="ProfessorController as profCtrl">
   <form>
-    Intitule : <input type="text" ng-model="assessmentForm.title" /><br />
-    Date : <input type="text" ng-model="assessmentForm.dateOfAssessment" /><br />
-    Duree  : <select ng-model="assessmentForm.duration">
+    <label for="intitule">Intitule :</label><input type="text" id="intitule" ng-model="assessmentForm.title" /><br />
+    <label for="date">Date :</label><input type="text" id="date" ng-model="assessmentForm.dateOfAssessment" /><br />
+    <label for="duree">Duree  :</label><select ng-model="assessmentForm.duration">
     				<option value="1">1H</option>
     				<option value="2">2H</option>
     				<option value="3">3H</option>

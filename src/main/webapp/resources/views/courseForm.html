@@ -1,8 +1,10 @@
+<link href="./resources/css/home.css" rel="stylesheet" type="text/css" media="screen" />
+
 <div ng-controller="ProfessorController as profCtrl">
   <form>
-    Intitule : <input type="text" ng-model="courseForm.name" /><br />
-    Description : <input type="text" ng-model="courseForm.description" /><br />
-    En ligne  : <select ng-model="courseForm.online">
+    <label for="intitule">Intitule :</label><input type="text" id="intitule" ng-model="courseForm.name" /><br />
+    <label for="description">Description :</label><input type="text" id="description" ng-model="courseForm.description" /><br />
+    <label for="enligne">En ligne  :</label><select ng-model="courseForm.online">
     				<option value="true">Oui</option>
     				<option value="false">Non</option>
     			</select>

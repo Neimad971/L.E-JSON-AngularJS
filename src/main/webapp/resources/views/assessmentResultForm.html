@@ -1,7 +1,9 @@
+<link href="./resources/css/home.css" rel="stylesheet" type="text/css" media="screen" />
+
 <div ng-controller="ProfessorController as profCtrl">
   <form>
-    Cours : <input type="text" ng-model="resultForm.assessmentName" /><br />
-    Note : <input type="number" ng-model="resultForm.score" /><br />
+    <label for="cours">Cours :</label><input type="text" id="cours" ng-model="resultForm.assessmentName" /><br />
+    <label for="note">Note :</label><input type="number" min="0" max="20" id="note" ng-model="resultForm.score" /><br />
     <button ng-click="submitAssessmentResult()">Valider</button>
   </form>
   
