@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,5 +36,12 @@ public class AssessmentController
 	public List<Assessment> showAssessments() 
 	{
 		return assessmentService.showAssessments();
+	}
+	
+	@RequestMapping(value="/dropoffassessment", method = RequestMethod.POST, produces = "application/json",headers="Accept=application/json")
+	@ResponseBody 
+	public String dropOffAssessment(@RequestBody String assessment) 
+	{    
+		return assessmentService.dropOffAssessment(assessment);
 	}
 }

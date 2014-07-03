@@ -14,4 +14,9 @@ public class AssessmentDao
 	{
 		return LearningEngineDatabase.getMyAssessments();
 	}
+	
+	public void insert(Assessment assessment)
+	{
+		LearningEngineDatabase.addAssessment(assessment);
+	}
 }

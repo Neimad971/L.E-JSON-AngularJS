@@ -3,7 +3,17 @@
 <div ng-controller="ProfessorController as profCtrl">
   <form>
     <label for="intitule">Intitule :</label><input type="text" id="intitule" ng-model="assessmentForm.title" /><br />
-    <label for="date">Date :</label><input type="text" id="date" ng-model="assessmentForm.dateOfAssessment" /><br />
+    <label for="date">Date :</label> <div ng-controller="DatepickerDemoCtrl" class="row">
+     								 	<div class="col-md-6">
+            								<p class="input-group">
+    											<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="assessmentForm.dateOfAssessment" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" /><br />
+    											<span class="input-group-btn">
+               										<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+             									</span>
+          	  								</p>
+        								</div>
+   									 </div>
+    			
     <label for="duree">Duree  :</label><select ng-model="assessmentForm.duration">
     				<option value="1">1H</option>
     				<option value="2">2H</option>
