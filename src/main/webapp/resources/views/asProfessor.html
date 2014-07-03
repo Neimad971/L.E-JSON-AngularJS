@@ -14,28 +14,29 @@
 </head>
 
 <body ng-controller="ProfessorController as profCtrl">
+	<div class="container col-md-10">
+		<button ng-model="selection" ng-click="dropOffResult()" type="button" class="btn btn-success">Deposer un resultat</button>
+		<button ng-model="selection" ng-click="addCourse()" type="button" class="btn btn-success">Ajouter un cours</button>
+		<button ng-model="selection" ng-click="addAssessment()" type="button" class="btn btn-success">Ajouter une evaluation</button>
+		<br><br><br>
 	
-	<button ng-model="selection" ng-click="dropOffResult()" type="button" class="btn btn-success">Deposer un resultat</button>
-	<button ng-model="selection" ng-click="addCourse()" type="button" class="btn btn-success">Ajouter un cours</button>
-	<button ng-model="selection" ng-click="addAssessment()" type="button" class="btn btn-success">Ajouter une evaluation</button>
-	<br><br><br>
-
-	<div class="container col-md-4">
-		<div class="panel panel-default">	
-			<div ng-switch on="selection">
-			
-		    	<div ng-switch-when="dropOffResult">
-		    		<ng-include src="'/learningengine/resources/views/assessmentResultForm.html'"> </ng-include>
-		    	</div> 
-		    	
-		    	<div ng-switch-when="addCourse">
-		    		<ng-include src="'/learningengine/resources/views/courseForm.html'"> </ng-include>
-		    	</div>
-		    	
-		    	<div ng-switch-when="addAssessment">
-		    		<ng-include src="'/learningengine/resources/views/assessmentForm.html'"> </ng-include>
-		    	</div>
-		  	</div>
+		<div class="container col-md-4">
+			<div class="panel panel-default">	
+				<div ng-switch on="selection">
+				
+			    	<div ng-switch-when="dropOffResult">
+			    		<ng-include src="'/learningengine/resources/views/assessmentResultForm.html'"> </ng-include>
+			    	</div> 
+			    	
+			    	<div ng-switch-when="addCourse">
+			    		<ng-include src="'/learningengine/resources/views/courseForm.html'"> </ng-include>
+			    	</div>
+			    	
+			    	<div ng-switch-when="addAssessment">
+			    		<ng-include src="'/learningengine/resources/views/assessmentForm.html'"> </ng-include>
+			    	</div>
+			  	</div>
+			</div>
 		</div>
 	</div>
 	
