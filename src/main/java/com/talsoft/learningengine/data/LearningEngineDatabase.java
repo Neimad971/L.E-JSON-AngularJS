@@ -1,7 +1,5 @@
 package com.talsoft.learningengine.data;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.joda.time.DateTime;

@@ -15,12 +15,10 @@
 
 
 <body ng-controller="AssessmentsController as assessementsCtrl">
-	
-	
 	<div class="gridStyle" ng-grid="gridOptions"></div> 
 	<ul>
 		<li ng-repeat="item in mySelections">  
-			<div>Date : {{item.dateOfAssessment}}</div>
+			<div>Date : {{item.dateOfAssessment | date:'EEEE d MMMM yyyy'}}</div>
 			<div>duree : {{item.duration}}H</div>
 		</li>  
 	</ul>

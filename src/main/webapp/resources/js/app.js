@@ -127,7 +127,7 @@
  	{
 		$scope.message = "professor";
 		
-		$scope.items = ['dropOffResult', 'addCourse'];
+		$scope.items = ['dropOffResult', 'addCourse', 'addAssessment'];
 		
 		
 		$scope.dropOffResult = function ()
@@ -140,6 +140,11 @@
 			$scope.selection = $scope.items[1];
 		};
 		
+		$scope.addAssessment = function ()
+		{
+			$scope.selection = $scope.items[2];
+		};
+		
 		
 		$scope.submitAssessmentResult = function ()
 		{
@@ -147,7 +152,7 @@
 			
 			$http.post('app/dropoffresult', result).success(function()
 			{
-				alert("Le resultat a ete poster");
+				alert("Le resultat a ete posté");
 			});
 		};
 		
@@ -158,9 +163,25 @@
 			
 			$http.post('app/dropoffcourse', course).success(function()
 			{
-				alert("Le cours a ete poster");
+				alert("Le cours a ete posté");
 			});
 		};
+		
+		$scope.submitAssessment = function ()
+		{
+			var assessment = $scope.assessmentForm;
+			
+			$http.post('app/dropoffassessment', assessment).success(function()
+			{
+				alert("Le cours a ete posté");
+			});
+		};
+		
+		
+		
+		
+		
+		
 		
  	}]);
 	
@@ -171,7 +192,6 @@
 		
 		$http.get('app/assessments').success(function(myAssessments)
 		{
-			alert(typeof myAssessments);
 			$scope.myData = myAssessments;
 		});
 		

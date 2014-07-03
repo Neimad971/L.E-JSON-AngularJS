@@ -10,7 +10,6 @@ public class Assessment
 	private String title;
 	private DateTime dateOfAssessment;
 	private int duration;
-	//private AssessmentResult assessmentResult;
 
 
 	public int getIdAssessment() 
@@ -59,19 +58,4 @@ public class Assessment
 	{
 		this.duration = duration;
 	}
-
-
-	/*public AssessmentResult getAssessmentResult() 
-	{
-		return assessmentResult;
-	}
-
-
-	public void setAssessmentResult(AssessmentResult assessmentResult) 
-	{
-		this.assessmentResult = assessmentResult;
-	}*/
-	
-	
-	
 }

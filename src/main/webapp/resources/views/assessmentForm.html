@@ -1,0 +1,19 @@
+<div ng-controller="ProfessorController as profCtrl">
+  <form>
+    Intitule : <input type="text" ng-model="assessmentForm.title" /><br />
+    Date : <input type="text" ng-model="assessmentForm.dateOfAssessment" /><br />
+    Duree  : <select ng-model="courseForm.online">
+    				<option value="true">Oui</option>
+    				<option value="false">Non</option>
+    			</select>
+    			
+
+	
+    
+  </div>
+    <button ng-click="submitAssessment()">Valider</button>
+  </form>
+  
+  <pre>form = {{courseForm | json}}</pre>
+  
+</div>
