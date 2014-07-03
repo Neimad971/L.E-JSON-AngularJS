@@ -3,13 +3,13 @@ package data;
 
 import java.util.List;
 
-import javassist.expr.Instanceof;
-
+import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.talsoft.learningengine.data.LearningEngineDatabase;
+import com.talsoft.learningengine.domain.Assessment;
 import com.talsoft.learningengine.domain.AssessmentResult;
 import com.talsoft.learningengine.domain.Course;
 
@@ -22,7 +22,7 @@ public class LearningEngineDatabaseUnitTest {
 	@Test
 	public void test_getAllCourses() {
 		List<Course> coursesList = LearningEngineDatabase.getAllCourses();
-		Assert.assertTrue(coursesList.size() > 0);
+		Assert.assertTrue(coursesList.size() == 3);
 	}
 	
 	@Test
@@ -36,20 +36,16 @@ public class LearningEngineDatabaseUnitTest {
 		
 		course.setDescription("Matrices, Ensembles, Logique");
 		LearningEngineDatabase.addCourse(course);
+		Assert.assertTrue(LearningEngineDatabase.getAllCourses().contains(course));
+		
+		LearningEngineDatabase.getMyCourses().clear();
 	}
 	
 	@Test
+	//Il n'y a pas de cours suivis par défaut
 	public void test_getMyCourses() {
-		Course course = new Course();
-		course.setIdCourse(1);
-		course.setName("Mathématiques");
-		course.setOnline(true);
-		course.setValidated(true);
-		course.setFollowed(true);
-		
-		LearningEngineDatabase.addMyCourse(course);
 		List<Course> coursesList = LearningEngineDatabase.getMyCourses();
-		Assert.assertEquals(coursesList.size(), 2);
+		Assert.assertTrue(coursesList.size() == 0);
 	}
 	
 	@Test
@@ -62,11 +58,33 @@ public class LearningEngineDatabaseUnitTest {
 		
 		LearningEngineDatabase.addAssessmentResults(assessmentResult);
 		Assert.assertTrue(LearningEngineDatabase.getMyAssessmentResults().contains(assessmentResult));
+		
+		LearningEngineDatabase.getMyAssessmentResults().clear();
 	}
 	
 	@Test
 	public void test_getMyAssessmentResults() {
 		List<AssessmentResult> myAssessmentResultList = LearningEngineDatabase.getMyAssessmentResults();
-		Assert.assertTrue(myAssessmentResultList.size() > 0);
+		Assert.assertTrue(myAssessmentResultList.size() == 3);
+	}
+	
+	@Test
+	public void test_getMyAssessments() {
+		List<Assessment> assessmentList = LearningEngineDatabase.getMyAssessments();
+		Assert.assertTrue(assessmentList.size() == 3);
+	}
+	
+	@Test
+	public void test_addAssessment() {
+		Assessment assessment = new Assessment();
+		assessment.setDateOfAssessment(new DateTime("04072014"));
+		assessment.setDuration(1);
+		assessment.setIdAssessment(1);
+		assessment.setTitle("Automates et langage C !");
+		
+		LearningEngineDatabase.addAssessment(assessment);
+		Assert.assertTrue(LearningEngineDatabase.getMyAssessments().contains(assessment));
+		
+		LearningEngineDatabase.getMyAssessments().clear();
 	}
 }
