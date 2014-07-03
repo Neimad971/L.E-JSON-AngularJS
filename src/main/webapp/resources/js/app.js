@@ -173,7 +173,7 @@
 			
 			$http.post('app/dropoffassessment', assessment).success(function()
 			{
-				alert("Le cours a ete posté");
+				alert("L'évaluation a ete posté");
 			});
 		};
 		
